@@ -57,7 +57,6 @@ def scriptGeneration(state: VideoState):
     return {"script": script.content}
 
 def videoGeneration(state: VideoState):
-    
     payload = {
     "prompt": f"{state.script}",
     "model": "veo3_fast",

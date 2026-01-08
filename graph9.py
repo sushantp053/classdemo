@@ -7,11 +7,10 @@ from langgraph.types import Command
 
 load_dotenv()
 
-
 @tool
 def get_stock_price(ticker: str) -> str:
     """Fetch the current stock price for the given ticker symbol."""
-    price = 123.45  # Placeholder for actual stock price fetching logic
+    price = 150.45  # Placeholder for actual stock price fetching logic
     return f"The current price of {ticker} is ${price}"
 
 @tool
