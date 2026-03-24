@@ -1,0 +1,26 @@
+[project]
+name = "crew_demo"
+version = "0.1.0"
+description = "crew_demo using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"  # limit to versions where onnxruntime has x86_64 mac wheels
+dependencies = [
+    "onnxruntime==1.15.1",  # last release with broad x86_64 mac support
+    "pyarrow==17.0.0",
+    "crewai[tools]==1.9.3"
+]
+
+[project.scripts]
+crew_demo = "crew_demo.main:run"
+run_crew = "crew_demo.main:run"
+train = "crew_demo.main:train"
+replay = "crew_demo.main:replay"
+test = "crew_demo.main:test"
+run_with_trigger = "crew_demo.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

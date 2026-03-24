@@ -7,27 +7,26 @@ load_dotenv()
 
 client = MultiServerMCPClient(
     {
-        # "stock": {
-        #     "transport": "http",
-        #     "url": "http://localhost:8000/stock",
-        # }
-        "stock": {
-            "transport": "stdio",  # Local subprocess communication
-            "command": "python",
-            # Absolute path to your math_server.py file
-            "args": ["mcpdemo.py"],
-        }
+        "todo": {
+            "transport": "http",
+            "url": "http://0.0.0.0:8000/mcp",
+        },
     }
 )
 
 async def callAgent():
     tools = await client.get_tools()
+    print("Loaded tools:", tools)
     agent = create_agent("openai:gpt-4.1", tools)
-    response = await agent.ainvoke({"messages": "what is the stock price of AAPL? Buy 10 shares if the price is below $150."})
-    print(response)
+    # response = await agent.ainvoke({"messages": "Mark My Buy Grocery has completed. What are my todo items?"})
+    # print(response)
 
-    for message in response["messages"]:
-        message.pretty_print()
+    while True:
+        user_input = input("User: ")
+        if user_input.lower() in ["exit", "quit"]:
+            break
+        response = await agent.ainvoke({"messages": user_input})
+        print("Agent:", response)
 
 # async.run(callAgent())
 
