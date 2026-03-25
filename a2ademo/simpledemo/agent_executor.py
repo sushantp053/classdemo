@@ -11,8 +11,8 @@ class GreetingAgentExecutor(AgentExecutor):
         self.agent = GreetingAgent()
 
     async def execute(self, context: RequestContext, event_queue: EventQueue):
-        result =  self.agent.invoke()
-        event_queue.enqueue_event({"type": "agent_response", "data": result})
+        result = await self.agent.invoke()
+        event_queue.enqueue_event({"type": "message", "data": result})
 
     
     async def cancel(self, context: RequestContext, event_queue: EventQueue):

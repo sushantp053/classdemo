@@ -12,7 +12,7 @@ from a2a.types import (
     TextPart,
 )
 
-PUBLIC_AGENT_CARD_PATH = "/.well-known/agent.json"
+PUBLIC_AGENT_CARD_PATH = "/.well-known/agent-card.json"
 BASE_URL = "http://localhost:9999"
 
 

@@ -1,4 +1,5 @@
 import uvicorn
+from starlette.applications import Starlette
 
 from a2a.server.apps import A2AStarletteApplication
 from a2a.server.request_handlers import DefaultRequestHandler
@@ -49,4 +50,6 @@ if __name__ == "__main__":
         http_handler=request_handler,
     )
 
-    uvicorn.run(server, host="0.0.0.0", port=9999)
+    app = Starlette(routes=server.routes())
+
+    uvicorn.run(app, host="0.0.0.0", port=9999)
